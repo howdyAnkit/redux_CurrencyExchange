@@ -15,9 +15,6 @@ export function ExchangeRate() {
   const amount = useSelector(state => state.amount);
   const currencyCode = useSelector(state => state.currencyCode);
 
-  const setAmount = () => {};
-  const setCurrencyCode = () => {};
-
   // fetch the exchange rates each time currency code changes
   useEffect(() => {
     getExchangeRates(currencyCode, supportedCurrencies).then(rates => {
@@ -25,15 +22,15 @@ export function ExchangeRate() {
     });
   }, [currencyCode]);
 
-  const handleCurrencyCode = useCallback(
-    e => setCurrencyCode(e.target.value),
-    []
-  );
+  // const handleCurrencyCode = useCallback(
+  //   e => setCurrencyCode(e.target.value),
+  //   []
+  // );
 
-  const handleAmountChange = useCallback(e => {
-    let newAmount = e.target.value;
-    setAmount(newAmount);
-  }, []);
+  // const handleAmountChange = useCallback(e => {
+  //   let newAmount = e.target.value;
+  //   setAmount(newAmount);
+  // }, []);
 
   return (
     <>
@@ -43,12 +40,11 @@ export function ExchangeRate() {
           <CurrencyCodePicker
             supportedCurrencies={supportedCurrencies}
             currencyCode={currencyCode}
-            onChange={handleCurrencyCode}
           />
         </h1>
       </section>
       <section>
-        <AmountField amount={amount} onChange={handleAmountChange} />
+        <AmountField amount={amount} />
       </section>
       <section>
         <RateTable currencyData={currencyData} amount={amount} />
