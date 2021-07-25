@@ -12,8 +12,8 @@ export function ExchangeRate() {
   // const [currencyCode, setCurrencyCode] = useState("USD");
   const [currencyData, setCurrencyData] = useState({ USD: 1.0 });
 
-  const amount = useSelector(state => state.amount);
-  const currencyCode = useSelector(state => state.currencyCode);
+  const amount = useSelector(state => state.rates.amount);
+  const currencyCode = useSelector(state => state.rates.currencyCode);
 
   // fetch the exchange rates each time currency code changes
   useEffect(() => {
